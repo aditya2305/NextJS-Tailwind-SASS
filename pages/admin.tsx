@@ -6,10 +6,15 @@ const admin = () => {
   return (
     <Layout>
       <Head>
-        <title>Admin Panel | Atlas AI</title>
+        <title>Admin | Atlas AI</title>
       </Head>
-      <div>Welcome to the Admin Panel</div>
-      <Link href="/">Back</Link>
+      <div className="flexbox">
+        <div>
+          <div className="heading">Admin Panel</div>
+        </div>
+
+        <Link href="/">Home</Link>
+      </div>
     </Layout>
   );
 };

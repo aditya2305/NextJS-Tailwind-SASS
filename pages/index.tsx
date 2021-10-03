@@ -12,7 +12,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const data = res.json();
 
   return {
-    // revalidate: 10, // WILL RERUN GETSTATICPROPS ON SERVER EVERY 10 SECONDS FOR EVERY REQUEST
+    revalidate: 10, // WILL RERUN GETSTATICPROPS ON SERVER EVERY 10 SECONDS FOR EVERY REQUEST
     props: { data: await data },
   };
 };
@@ -30,23 +30,18 @@ export default function Home({ data }) {
             Say goodbye to your writing problems
           </div>
           <br />
-          <div>
-            {data.photos.slice(0, 10).map((item) => {
-              return (
-                <div>
-                  <img src={item.img_src} alt="" />
-                  {/* <Image
-                    loader={() => item.img_src}
-                    src={item.img_src}
-                    alt="Picture of the author"
-                  /> */}
-                </div>
-              );
-            })}
-          </div>
         </div>
 
         <Link href="/admin">Admin Panel</Link>
+      </div>
+      <div>
+        {data.photos.slice(0, 5).map((item) => {
+          return (
+            <div>
+              <Image src={item.img_src} alt="" height={600} width={1000} />
+            </div>
+          );
+        })}
       </div>
     </Layout>
   );

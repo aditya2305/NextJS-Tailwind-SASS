@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Head from "next/head";
 import Layout from "../components/layout";
-import { GetServerSideProps, GetStaticProps } from "next";
+import { GetStaticProps } from "next";
 import Image from "next/image";
 
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -12,7 +12,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const data = res.json();
 
   return {
-    revalidate: 10, // WILL RERUN GETSTATICPROPS ON SERVER EVERY 10 SECONDS FOR EVERY REQUEST
+    revalidate: 10, // WILL GENERATE PAGE ATMOST ONCE EVERY 10 SECONDS BETWEEN USER REQUESTS
     props: { data: await data },
   };
 };
@@ -35,13 +35,11 @@ export default function Home({ data }) {
         <Link href="/admin">Admin Panel</Link>
       </div>
       <div>
-        {data.photos.slice(0, 5).map((item) => {
-          return (
-            <div>
-              <Image src={item.img_src} alt="" height={600} width={1000} />
-            </div>
-          );
-        })}
+        {data.photos.slice(0, 5).map((item) => (
+          <div>
+            <Image src={item.img_src} alt="" height={1080} width={1920} />
+          </div>
+        ))}
       </div>
     </Layout>
   );

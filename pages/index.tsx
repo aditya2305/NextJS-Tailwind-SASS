@@ -36,7 +36,7 @@ export default function Home({ data }) {
       </div>
       <div>
         {data.photos.slice(0, 5).map((item) => (
-          <div>
+          <div key={item.id}>
             <Image src={item.img_src} alt="" height={1080} width={1920} />
           </div>
         ))}

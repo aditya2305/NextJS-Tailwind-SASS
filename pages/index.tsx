@@ -27,7 +27,7 @@ export default function Home({ data }) {
         <div>
           <div className="heading">Welcome to Atlas AI</div>
           <div style={{ textAlign: "right" }}>
-            Say goodbye to your writing problems
+            Everything is nothing without within
           </div>
           <br />
         </div>
